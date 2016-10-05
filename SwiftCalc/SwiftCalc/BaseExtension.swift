@@ -32,7 +32,18 @@ extension Double {
             3. Display an integer when the result is an integer of allowable size.
             Optional: Use scientific notation for any values that exceed the character max.
         */
-        return "\(self)"
+        var ret :  String
+        let isInteger = floor(self) == self
+        if (isInteger){
+            ret = String(Int(self))
+        }else{
+            ret = String(self)
+        }
+        if (ret.characters.count > 7){
+            let index = ret.index(ret.startIndex, offsetBy: 7)
+            return ret.substring(to: index)
+        }
+        return ret
     }
 }
 
